@@ -1,0 +1,40 @@
+SELECT 
+	product.id, 
+    product.product_name, 
+    product.p_price, 
+    product.s_price, 
+    product.qty,
+    product.mfg_date,
+    product.exp_date,
+    company.name 
+    AS company_name, 
+    categories.name AS 
+    category_name 
+    FROM product 
+    JOIN company ON product.company_id = company.id JOIN categories ON product.category_id = categories.id;
+
+
+    SELECT 
+   billing.id, 
+   billing.bill_date,
+   billing.total_amount,
+   billing.discount,
+   billing.tax,
+   customer.name 
+   AS customer_name, 
+   product.product_name AS 
+   product_name 
+   FROM billing 
+   JOIN customer ON billing.customer_id = customer.id JOIN product ON billing.product_id = product.id";
+
+   dunesfactory11@gmail.com
+
+   Nsr@112233
+
+   echo "# new-stock-management" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/dunes11/new-stock-management.git
+git push -u origin main
