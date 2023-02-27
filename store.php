@@ -57,7 +57,7 @@ if($con->query($sql5)){
                }
            }
        }
-     echo  $sql4="insert into customer(profile,name,mobile,whatsup_no,email,address)value('$to','$_POST[name]','$_POST[mobile]','$_POST[whatsup_no]','$_POST[email]','$_POST[address]')";
+        $sql4="insert into customer(profile,name,mobile,whatsup_no,email,address)value('$to','$_POST[name]','$_POST[mobile]','$_POST[whatsup_no]','$_POST[email]','$_POST[address]')";
         if($con->query($sql4)){
         echo "sucesfully inserted";
     }else{
