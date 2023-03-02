@@ -8604,8 +8604,8 @@ pre {
   background-color: #000000; }
 
 .table-hover tbody tr:hover {
-  color: #212529;
-  background-color: #000000; }
+  color: #fbfbfb;
+  background-color: #0a0a0a; }
 
 .table-primary,
 .table-primary > th,
@@ -8862,9 +8862,9 @@ pre {
   .jsgrid .jsgrid-table .jsgrid-filter-row select:focus, .jsgrid .jsgrid-table .jsgrid-filter-row input:focus[type=number], .select2-container--default .select2-selection--single:focus, .select2-container--default .select2-selection--single .select2-search__field:focus, .typeahead:focus,
   .tt-query:focus,
   .tt-hint:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #80bdff;
+    color: #0dfbef;
+    background-color: #0fdefa;
+    border-color: #0976ea;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
   .form-control::placeholder, .asColorPicker-input::placeholder, .dataTables_wrapper select::placeholder, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text]::placeholder,
@@ -21131,5 +21131,13 @@ div.tagsinput {
   width: 100%;
   -webkit-flex-grow: 1;
   flex-grow: 1; }
+
+  .rimage{
+    border-radius: 50%;
+    height: 30px;
+   
+}
+
+/* card css */
 
 /*# sourceMappingURL=maps/style.css.map */

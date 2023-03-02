@@ -1,7 +1,7 @@
 <?php include "top.php"?>
 
 <?php
-    session_start();
+    // session_start();
     $con=new mysqli("localhost","root","","stock");
     $sql="select * from customer";
     $rs=$con->query($sql);
@@ -14,31 +14,35 @@
 
 ?>
 
-    <table class="table mt-3">
-        <thead class="table table-dark">
+<div class="container ">
+    <table class="table bg-light table-bordered table-hover">
+        <thead class=" text-dark" >
             <tr>
-                <th>S.no</th>
-                <th>Profile</th>
-                <th>Name</th>
-                <th>Mobile</th>
-                <th>Whatsup</th>
-                <th>E-mail</th>
-                <th>Addrss</th>
+
+                <th class="text-center text-dark" style="background: yellow;">S.no</th>
+                <th class="text-center text-dark" style="background: yellow;">profile</th>
+                <th class="text-center text-dark" style="background: yellow;">name</th>
+                <th class="text-center text-dark" style="background: yellow;">mobile</th>
+                <th class="text-center text-dark" style="background: yellow;">whatsup_no</th>
+                <th class="text-center text-dark" style="background: yellow;">email</th>
+                <th class="text-center text-dark" style="background: yellow;">address</th>
+                <th class="text-center text-dark" style="background: yellow;">Action</th>
             </tr>
         </thead>
-        <tbody>
             <?php $sn=0;
-    // print_r($data);
-   
     foreach($data as $info){ ?>
+            <tbody class="text-dark">
             <tr>
-                <td><?=++$sn;?></td>
-                <td><?=$info["profile"]?></td>
+                <td class="bg-primary"><?=++$sn;?></td>
+                <td><img src="<?php echo $info["profile"]?$info["profile"]:$blank;?>" class="rimage" style="width:30px"></td>
                 <td><?=$info["name"];?></td>
                 <td><?=$info["mobile"]?></td>
                 <td><?=$info["whatsup_no"];?></td>
                 <td><?=$info["email"];?></td>
                 <td><?=$info["address"];?></td>
+                <td><a class="btn btn-success"  href="customer_edit.php?id=<?=$info["id"]?>">Edit</a>
+                    <a class="btn btn-danger">Delete</a>
+                </td>
             </tr>
         </tbody>
         <?php } //$con->close();  }?>

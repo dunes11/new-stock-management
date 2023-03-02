@@ -1,24 +1,29 @@
-
- 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
     <title>Document</title>
 </head>
-<body style="background-color:#0d0d0d;">
-    
- 
+<style>
+body {
 
+    background-color: #0d0d0d;
+}
+</style>
 
+<body>
 
     <?php
      session_start(); 
-    include ("db.php");
+   
     $con=new mysqli("localhost","root","","stock");
     $a="";
     $count=null;
@@ -47,6 +52,7 @@
 
 
     <div class="container w-50" style="margin-top:15%">
+        <!-- <img class="image1" src="images/log-in.png"> -->
         <div class=" text-center text-primary" style="width:102.30%;margin-left:-13px;border-radius:0">
             <h3>Login</h3>
             <?php if(!$count == 1){ 
@@ -64,12 +70,14 @@
                 <label for="exampleInputPassword1" class="form-label text-light">Password</label>
                 <input type="password" name="password" placeholder="Password" required class="form-control">
                 <label for="exampleInputPassword1" class="form-label text-light">narayan123</label>
-              
+
             </div>
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-success" name="submit">Login</button>
             </div>
         </form>
     </div>
+
 </body>
+
 </html>

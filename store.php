@@ -1,10 +1,16 @@
 <?php
-    $con=new mysqli("localhost","root","","stock");
+    $dbname="mysql:host=localhost;dbname=stock";
+    $username="root";
+    $pass="";
+ 
+    $con=new PDO($dbname,$username,$pass);
+
+    $id=$_GET["id"];
     if(isset($_POST["product"])){
     $sql="insert into product(category_id,company_id,product_name,p_price,s_price,qty,mfg_date,exp_date)value('$_POST[category_id]','$_POST[company_id]','$_POST[product_name]','$_POST[p_price]','$_POST[s_price]','$_POST[qty]','$_POST[mfg_date]','$_POST[exp_date]')";
     if($con->query($sql)){
-        echo "success"; 
-        //header("Location:home_index.php");
+       // echo "success"; 
+        header("Location:home_index.php");
     }else{
         echo "query error";
     }
@@ -33,8 +39,8 @@ if(isset($_POST["bill"])){
     value('$_POST[customer_id]','$_POST[product_id]','$_POST[bill_date]','$_POST[total_amount]','$_POST[discount]','$_POST[tax]')";
     
 if($con->query($sql5)){
-    echo "success fully done";
-    // header("Location:home_index.php");
+    //echo "success fully done";
+    header("Location:home_index.php");
 }else{
     echo "query error";
 }
@@ -59,10 +65,20 @@ if($con->query($sql5)){
        }
         $sql4="insert into customer(profile,name,mobile,whatsup_no,email,address)value('$to','$_POST[name]','$_POST[mobile]','$_POST[whatsup_no]','$_POST[email]','$_POST[address]')";
         if($con->query($sql4)){
-        echo "sucesfully inserted";
+            echo "success fully";
+            //header("Location:home_index.php");
     }else{
         echo "query error";
     }
+}
+}
+if(isset($_POST["product_update"]) and isset($_GET["id"])){
+   $sql3="update product set category_id='$_POST[category_id]',company_id='$_POST[company_id]',product_name='$_POST[product_name]',p_price='$_POST[p_price]',s_price='$_POST[s_price]',qty='$_POST[qty]',mfg_date='$_POST[mfg_date]',exp_date='$_POST[exp_date]' where id=$id";
+if($con->query($sql3)){
+    //echo "success";
+    header("Location:home_index.php");
+}else{
+    echo "query error";
 }
 }
 ?>

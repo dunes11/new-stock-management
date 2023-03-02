@@ -1,9 +1,9 @@
 <?php
-session_start();
+//session_start();
 include "top.php"?>
 
 
-<div class="container  w-25 mt-5">
+<div class="container  mt-5">
     <div class="alert  text-center text-light"
         style="width:100.30%;margin-left:-2px;border-radius:0;background-color:green">
         <h3>Add company</h3>

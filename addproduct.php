@@ -1,4 +1,57 @@
-<?php include "top.php" ?>
+<?php include "top.php"; ?>
+<?php
+        $dsn = 'mysql:host=localhost;dbname=stock';
+        $username = 'root';
+        $password = '';
+        $pdo = new PDO($dsn, $username, $password);
+        
+        try {
+        if(isset($_POST['product'])) {
+            if(isset($_POST['company_id']) && ($_POST['product_name'])){
+                $sql="SELECT * FROM product WHERE  company_id LIKE '%$_POST[company_id]%' and product_name LIKE '%$_POST[product_name]%'";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+            }
+        $sql = 'INSERT INTO product (category_id,company_id,product_name,p_price,s_price,qty,mfg_date,exp_date) VALUES (:category_id, :company_id, :product_name, :p_price, :s_price, :qty, :mfg_date, :exp_date)';
+        $stmt = $pdo->prepare($sql);
+         
+        $stmt->bindParam(':category_id',$_POST['category_id']);
+        $stmt->bindParam(':company_id',$_POST['company_id']);
+        $stmt->bindParam(':product_name',$_POST['product_name']);
+        $stmt->bindParam(':p_price',$_POST['p_price']);
+        $stmt->bindParam(':s_price',$_POST['s_price']);
+        $stmt->bindParam(':qty',$_POST['qty']);
+        $stmt->bindParam(':mfg_date',$_POST['mfg_date']);
+        $stmt->bindParam(':exp_date',$_POST['exp_date']);
+        
+        $stmt->execute();
+        echo "<div class='container alert' id='myAlert' style='background-color:#2EFE2E;border-radius:0;'>";
+        echo "<h3 class='text-dark text-center'>Succesfully inserted</h3>";
+        echo "</div>";
+        } 
+        
+        //echo 'Data inserted successfully.';
+        } catch (PDOException $e) {
+            $error=$stmt->errorInfo();
+            if($error[1]){
+                $mass = str_replace(" key 'product_name'", "", $error);
+               // echo $mass;
+                echo "<div id='myAlert' class='container alert' style='background-color:#FE2E2E;border-radius:0;'>";
+                echo "<div class='text-dark fw-bold text-center'>$mass[2] Product name already in list</div>";
+                echo "</div>";
+            }
+        }
+?>
+
+
+
+<!-- <div id="myAlert" class="alert alert-danger" role="alert">
+  This is a danger alert—check it out!
+</div> -->
+
+
+
+
 
 <?php
     $con=new mysqli("localhost","root","","stock");
@@ -15,14 +68,12 @@
     }  
    // $con->close();
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-    <div class="container  w-25 mt-3">
+    <div class="container  mt-3">
         <div class="alert  text-center text-light" style="width:100.30%;margin-left:-2px;border-radius:0;background-color:green">
             <h3>Add product</h3>
         </div>
-        <form method="post" action="store.php">
+        <form method="post">
 
             <div class="mb-3">
                 <select class="form-select bg-light fw-bold" name="category_id" aria-label="Default select example">
