@@ -36,16 +36,12 @@ setTimeout(function() {
 </script>
 <!--js code for get quatity -->
 <script>
-  // add an event listener to the product dropdown
-  document.getElementById("product").addEventListener("change", function() {
-    // get the selected product ID
+ document.getElementById("product").addEventListener("change", function() {
     var product_id = this.value;
-    // send an AJAX request to the PHP script
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        // update the quantity input field with the quantity retrieved from the PHP script
-        document.getElementById("quantity").value = this.responseText;
+        document.getElementById("quantity1").value = this.responseText;
       }
     };
     xhttp.open("POST", "get_quantity.php", true);
@@ -53,7 +49,47 @@ setTimeout(function() {
     xhttp.send("product_id=" + product_id);
   });
 </script>
+<!--js code for get price -->
+<script>
+ document.getElementById("product").addEventListener("change", function() {
+    var product_id = this.value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("getprice").value = this.responseText;
+      }
+    };
+    xhttp.open("POST", "get_price.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("product_id=" + product_id);
+  });
+</script>
+  
+<!--js code for get total amount -->
+<script>
+function calculateTotalPrice() {
+  var productId = document.getElementById("product").value;
+  var quantity = document.getElementById("quantity").value;
 
+  // console.log(productId,quantity);
+  // make an AJAX request to fetch the product price
+  var xhr = new XMLHttpRequest();
+  var price=xhr.open("POST", "get-product-price.php",true);
+  // console.log("price is here -:",price);
+
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function() {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      var productPrice = parseFloat(this.responseText);
+  // console.log("price is here -:",productPrice);
+
+      var totalPrice = productPrice * quantity;
+      document.getElementById("total-price").value = totalPrice;
+    }
+  };
+  xhr.send("productId=" + productId);
+}
+</script>
 
 </body>
 

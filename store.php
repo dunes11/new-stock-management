@@ -35,9 +35,10 @@
 }
 if(isset($_POST["bill"])){
     //$sql4="insert into invoice(invoice)value('$_POST[invoice]')";
-  echo  $sql5="insert into billing(customer_id,product_id,bill_date,total_amount,discount,tax)
+  echo  $sql5="insert into billing(customer_id,product_id,bill_date,total_amount,invoice_id,quantity,product_price)
     value('$_POST[customer_id]','$_POST[product_id]','$_POST[bill_date]','$_POST[total_amount]','$_POST[discount]','$_POST[tax]')";
-    
+    // customer_id	product_id	bill_date	total_amount	invoice_id	quantity	product_price	
+
 if($con->query($sql5)){
     //echo "success fully done";
     header("Location:home_index.php");

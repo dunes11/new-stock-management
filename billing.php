@@ -3,7 +3,6 @@
     $con=new mysqli("localhost","root","","stock");
     $sql1="select id,name from customer";
     $sql2="select id,product_name from product";
-   // $sql3="SELECT quantity FROM products WHERE id = '$product_id'";
    
     $inf=0;
     $rs=$con->query($sql1);
@@ -15,28 +14,57 @@
         if($rs->num_rows> 0){
             $data2= mysqli_fetch_all($rs, MYSQLI_ASSOC);
     }
-    // $rs=$con->query($sql3);
-    // if($rs->num_rows> 0){
-    //     $data3= mysqli_fetch_all($rs, MYSQLI_ASSOC);
-// }
-    // $rs=$con->query($sql3);
-    //     if($rs->num_rows> 0){
-    //         $data3= mysqli_fetch_all($rs, MYSQLI_ASSOC);
-    // }  
-   $con->close();
+
+    $query="select invoice_id from billing order by invoice_id desc";
+    $result=mysqli_query($con,$query);
+    $row=mysqli_fetch_array($result);
+    $lastid=$row["invoice_id"];
+        if(empty($lastid)){
+            $number="E-0000001";
+        }else{
+            $idd=str_replace("E-","",$lastid);
+            $id=str_pad($idd+1,7,0,STR_PAD_LEFT);
+            $number="E-".$id;
+    }
+
+    if(isset($_POST["bill"])){
+    
+                $sql="insert into billing(customer_id,product_id,bill_date,total_amount,quantity,invoice_id)
+                value('$_POST[customer_id]','$_POST[product_id]','$_POST[bill_date]','$_POST[total_amount]','$_POST[quantity]','$_POST[invoice_id]')";
+            if(mysqli_query($con,$sql)){
+                $query="select invoice_id from billing order by invoice_id desc";
+                $result=$con->query($query);
+                $data2=mysqli_fetch_array($result);
+                $lastid=$data2["invoice_id"];
+            if(empty($lastid)){
+                $number="E-0000001";
+                }else{
+                    $idd=str_replace("E-","",$lastid);
+                    $id=str_pad($idd+1,7,0,STR_PAD_LEFT);
+                    $number="E-".$id; 
+                }
+            }
+    }
+
+
 ?>
-<div class="container   mt-3">
+<div class="container mt-3">
     <div class="alert  text-center text-light"
         style="width:100.30%;margin-left:-2px;border-radius:0;background-color:green">
         <h3>Make bill</h3>
     </div>
-    <form method="post" action="store.php">
-
+    <form method="post">
+        
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Invoice number</label>
+            <input type="text" name="invoice_id" style="border-color:green" value="<?=$number;?>" readonly required class="form-control bg-dark"
+                id="exampleInputPassword1">
+        </div>
         <div class="mb-3">
             <select class="form-select bg-light fw-bold" name="customer_id" aria-label="Default select example">
                 <option selected>Select Customer</option>
                 <?php
-        foreach($data as $info){ ?>
+        foreach($data as $info) { ?>
                 <option value="<?=$info["id"];?>"><?=$info["name"];?></option>
                 <?php } ?>
             </select>
@@ -46,7 +74,6 @@
             <select class="form-select bg-light fw-bold" id="product" name="product_id">
                 <option value="">Select product</option>
                 <?php
-    // connect to the database
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -54,16 +81,12 @@
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
-    // retrieve the list of products from the database
     $sql = "SELECT id, product_name FROM product";
     $result = $conn->query($sql);
 
-    // display the list of products in the dropdown
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             echo "<option value='" . $row["id"] . "'>" . $row["product_name"] . "</option>";
@@ -72,33 +95,41 @@
         echo "<option value=''>No products found</option>";
     }
 
-    // close the database connection
-    $conn->close();
     ?>
+
             </select>
-            <br>
-            <label  class="form-label" for="quantity">Quantity:</label>
-            <input class="form-control bg-dark text-danger" style="border-color:green" disabled type="text" id="quantity" name="qty" readonly>
         </div>
-        <!-- customer_id	product_id	invoice_id	bill_date	total_amount	discount	tax	 -->
+        <div class="mb-3">
+            <label class="form-label" for="quantity">Available quantity:</label>
+            <input class="form-control bg-dark text-danger" style="border-color:green" disabled type="text" id="quantity1" name="qty" readonly>
+        </div>
 
         <div class="mb-3">
+            <label class="form-label" for="quantity">Product price:</label>
+            <input class="form-control bg-dark text-danger" style="border-color:green" disabled type="text" id="getprice" name="product_price" readonly>
+        </div>
+
+        <div class="mb-3">
+        <label  class="form-label" for="quantity">Quantity:</label>
+        <input  class="form-control" type="number" id="quantity" name="quantity" min="1" value="1">
+        </div>
+        <div class="mb-3">
+        <label  class="form-label" for="total-price">Total Amount:</label>
+        <input type="text" class="form-control bg-dark text-danger" name="total_amount" style="border-color:green" disabled id="total-price"  readonly>
+        </div>
+        <button class="btn btn-primary text-dark fw-bold" type="button" onclick="calculateTotalPrice()">Calculate Total Price</button>
+
+        <!-- <div class="mb-3"> customer_id,product_id,bill_date,total_amount,quantity,product_price,invoice_id
+            <label for="exampleInputPassword1" class="form-label">Invoice number</label>
+            <input type="number" name="invoice_id"  value="<?= rand(0,10000);?>" required class="form-control" id="exampleInputPassword1">
+        </div> -->
+        <div class="mb-3">
+        <label  class="form-label" for="total-price">Total Amount:</label>
+        <input type="text" class="form-control bg-dark text-danger" name="total_amount" style="border-color:green"  id="total-price"  >
+        </div>
+        <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Bill date</label>
-            <input type="date" name="bill_date" required class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Total amount</label>
-            <input type="number" name="total_amount" placeholder="Total amount" required class="form-control"
-                id="exampleInputPassword1">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">discount</label>
-            <input type="number" name="discount" placeholder="Discount" required class="form-control"
-                id="exampleInputPassword1">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">tax</label>
-            <input type="number" name="tax" placeholder="Tax" required class="form-control" id="exampleInputPassword1">
+            <input type="date" name="bill_date"  required class="form-control" id="exampleInputPassword1">
         </div>
         <div class="d-grid gap-2 mt-3">
             <button type="submit" class="btn btn-success" name="bill">Submit</button>
