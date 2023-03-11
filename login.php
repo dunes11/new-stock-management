@@ -1,83 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-    </script>
-    <title>Document</title>
-</head>
-<style>
-body {
-
-    background-color: #0d0d0d;
-}
-</style>
-
-<body>
-
-    <?php
+<?php
      session_start(); 
-   
-    $con=new mysqli("localhost","root","","stock");
-    $a="";
-    $count=null;
+     
+     $con=new mysqli("localhost","root","","stock");
+     $a="";
+     $count=null;
+ 
+     if(isset($_POST['submit']) ) { 
+         $username = $_POST['name'];  
+         $password = $_POST['password'];   
+       
+         $sql = "select * from admin where name = '$username' and password = '$password'";  
+         $rs= $con->query($sql);  
+         $row = mysqli_fetch_array($rs, MYSQLI_ASSOC);  
+         $count = mysqli_num_rows($rs);  
+         $_SESSION["username"]=$username; 
+         $_SESSION["password"]=$password;
+         try{  
+         if($count == 1){
+             header("Location:home_index.php");
+             // echo "<h1><center> Login successful </center></h1>";            
+         }  
+         throw new Exception("Plz enter valid username and password");  
+     }catch(Exception $e){
+            $a= $e->getMessage();
+     }
+ }        
+ ?>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
 
-    if(isset($_POST['submit']) ) { 
-        $username = $_POST['name'];  
-        $password = $_POST['password'];   
-      
-        $sql = "select * from admin where name = '$username' and password = '$password'";  
-        $rs= $con->query($sql);  
-        $row = mysqli_fetch_array($rs, MYSQLI_ASSOC);  
-        $count = mysqli_num_rows($rs);  
-        $_SESSION["username"]=$username; 
-        $_SESSION["password"]=$password;
-        try{  
-        if($count == 1){
-            header("Location:home_index.php");
-            // echo "<h1><center> Login successful </center></h1>";            
-        }  
-        throw new Exception("Plz enter valid username and password");  
-    }catch(Exception $e){
-           $a= $e->getMessage();
-    }
-}        
-?>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stock Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="vendors/prism/prism.css" rel="stylesheet">
+    <link href="assets/css/theme.css" rel="stylesheet" />
+    <link href="assets/css/user.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="images/letter-s.png"/>
+    
+  </head>
 
 
-    <div class="container w-50" style="margin-top:15%">
-        <!-- <img class="image1" src="images/log-in.png"> -->
-        <div class=" text-center text-primary" style="width:102.30%;margin-left:-13px;border-radius:0">
-            <h3>Login</h3>
-            <?php if(!$count == 1){ 
-                
-                   echo "<div class='text-danger'>".$a."</div>"; 
-            } ?>
+  <body style="background:black">
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main " id="top">
+      <nav class="navbar bg-black navbar-expand-lg navbar-light fixed-top py-3 shadow p-3  bg-body " data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container"><a class="navbar-brand"> <img class="sidebar-brand brand-logo" src="images/letter-s.png" style="width:8%;">&nbsp; Stock manager</a>
+          <!-- <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
+          <div class="collapse navbar-collapse pt-4 pt-lg-0" id="navbarSupportedContent">
+            <!-- <p class="mb-0 ms-auto text-light fs-0 fw-normal"><i class="fas fa-phone-alt me-2"></i>Call Us Now <a class="text-light" href="tel:+604-680-9785">+215(362)4579</a></p> -->
+            <ul class="navbar-nav ms-auto border-bottom border-lg-bottom-0 pt-2 pt-lg-0">
+              <li class="nav-item px-2"><a class="nav-link active" aria-current="page" href="#">Login</a></li>
+              <!-- <li class="nav-item px-2"><a class="nav-link" href="#products">Products</a></li>
+              <li class="nav-item px-2"><a class="nav-link" href="#news">News &amp; Blog</a></li>
+              <li class="nav-item px-2"><a class="nav-link" href="#contact">Contact us</a></li> -->
+            </ul>
+            <div class="d-flex mt-2 align-items-center mt-lg-0">
+              <div class="dropdown">
+                <button class="btn btn-sm d-flex mx-2" id="dropdownMenuButton1" type="submit" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-search text-primary"></i></button>
+                <div class="dropdown-menu dropdown-menu-lg-end p-0 rounded" aria-labelledby="dropdownMenuButton1" style="top:55px">
+                  <form>
+                    <input class="form-control form-search-control border-100" type="search" placeholder="Search" aria-label="Search" />
+                  </form>
+                </div>
+              </div><a href="#!"> <i class="fas fa-user text-primary"> </i></a>
+            </div>
+          </div>
         </div>
-        <form method="post">
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label text-light">Username</label>
-                <input type="text" name="name" required placeholder="Enter username" class="form-control"
-                    id="exampleInputPassword1">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label text-light">Password</label>
-                <input type="password" name="password" placeholder="Password" required class="form-control">
-                <label for="exampleInputPassword1" class="form-label text-light">narayan123</label>
+      </nav>
+      <section class="py-0">
+        <!-- <div class="bg-holder" style="background-image:url(assets/img/illustrations/bg.png);background-position:left center;background-size:auto 816px;">
+        </div>
+        /.bg-holder -->
 
+        <div class="container">
+          <div class="row align-items-center min-vh-100">
+            <div class="col-md-7 col-xl-7 pt-9 text-md-start text-center">
+              <h1 class="display-2 text-light fw-thin">Welcome in Stock<br class="d-none d-xl-block" /><strong class="fw-bolder text-success">Management system</strong></h1>
+              <p class="fs-2 text-400">it's very easy and simple to use☻<br class="d-none d-xxl-block" /></p>
             </div>
-            <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-success" name="submit">Login</button>
+            <div class="col-md-5 col-xl-5 pe-xxl-0">
+              <div class="card card-bg shadow hero-header-form">
+                <div class="card-body p-4 p-xl-6">
+                  <h2 class="text-100 text-center"><img class="sidebar-brand brand-logo" src="images/login-.png" style="width:10%;">Login</h2>
+                  <?php if(!$count == 1){ 
+                
+                   echo "<div class='text-danger text-center'>".$a."</div>"; 
+         } ?>
+                  <form class="mb-3" method="post">
+                    
+                    <div class="form-floating mb-3">
+                      <input class="form-control input-box form-ensurance-header-control" required name="name" id="floatingName" type="text" placeholder="name">
+                      <label for="floatingName">Username</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input class="form-control input-box form-ensurance-header-control" required name="password" id="floatingPhone" type="password" placeholder="name@example.com">
+                      <label for="floatingPhone">Password</label>
+                    </div>
+                    <label for="floatingPhone">Password : narayan123 | username : @narayan</label>
+                    </div>
+                    <div class="col-12 d-grid">
+                      <button type="submit" name="submit" class="btn btn-success rounded-pill" type="submit">Login</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
-        </form>
-    </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="py-0 bg-black">
 
-</body>
+        <div class="container">
+          <div class="row justify-content-md-between justify-content-evenly py-4">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-auto text-center text-md-start">
+              <p class="fs--1 my-2 fw-light text-200">All rights Reserved &copy; Company, 2023</p>
+            </div>
+            <div class="col-12 col-sm-8 col-md-6">
+              <p class="fs--1 fw-light my-2 text-center text-md-end text-200"> Made by&nbsp;
+                <svg class="bi bi-suit-heart-fill" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#F95C19" viewBox="0 0 16 16">
+                  <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"></path>
+                </svg>&nbsp;&nbsp;<a class="fw-bold text-success" href="" target="_blank">Narayan swami</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+
+        </section>
+    </main>
+
+    <script src="assets/js/theme.js"></script>
+
+  </body>
 
 </html>

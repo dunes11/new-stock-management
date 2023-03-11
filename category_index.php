@@ -11,7 +11,7 @@
    $con->close();
 ?>
 
-<div class="container" style="margin-top: -4%;margin-left:-2%">
+<div class="containe" style="margin-top: -3%;margin-left:-2%">
     <table class="table bg-light table-bordered table-hover">
         <thead class=" text-dark" >
             <tr>
@@ -29,8 +29,8 @@
             <tr>
                 <td class="bg-primary"><?=++$sn;?></td>
                 <td><?=$info["name"]?></td>
-                <td><a class="btn btn-success">Edit</a>
-                    <a class="btn btn-danger">Delete</a>
+                <td><a class="btn btn-success text-dark">Edit</a>
+                    <a class="btn btn-danger text-dark">Delete</a>
                 </td>
             </tr>
         </tbody>

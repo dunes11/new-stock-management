@@ -42,6 +42,9 @@
                     $idd=str_replace("E-","",$lastid);
                     $id=str_pad($idd+1,7,0,STR_PAD_LEFT);
                     $number="E-".$id; 
+                    echo "<div id='myAlert' class='container alert' style='background-color:green;border-radius:0;'>";
+                    echo "<div class='text-dark fw-bold text-center'>Succesfully generated</div>";
+                    echo "</div>";
                 }
             }
     }
@@ -52,6 +55,7 @@
     <div class="alert  text-center text-light"
         style="width:100.30%;margin-left:-2px;border-radius:0;background-color:green">
         <h3>Make bill</h3>
+        (<span style="color:red;font-size:10px;">*</span>)<span style="font-size:10px;color:black;" class="fw-bold">fields are required</span>
     </div>
     <form method="post">
         
@@ -61,7 +65,8 @@
                 id="exampleInputPassword1">
         </div>
         <div class="mb-3">
-            <select class="form-select bg-light fw-bold" name="customer_id" aria-label="Default select example">
+        <label for="exampleInputPassword1" class="form-label">Select Customer</label><span style="color:red;font-size:10px;"> *</span>
+            <select required class="form-select bg-light fw-bold" name="customer_id" aria-label="Default select example">
                 <option selected>Select Customer</option>
                 <?php
         foreach($data as $info) { ?>
@@ -71,7 +76,8 @@
         </div>
         <div class="mb-3">
             <!-- <label for="product">Select a product:</label> -->
-            <select class="form-select bg-light fw-bold" id="product" name="product_id">
+            <label for="exampleInputPassword1" class="form-label">Select product</label><span style="color:red;font-size:10px;"> *</span>
+            <select required class="form-select bg-light fw-bold" id="product" name="product_id">
                 <option value="">Select product</option>
                 <?php
     $servername = "localhost";
@@ -110,26 +116,27 @@
         </div>
 
         <div class="mb-3">
-        <label  class="form-label" for="quantity">Quantity:</label>
-        <input  class="form-control" type="number" id="quantity" name="quantity" min="1" value="1">
+        <label  class="form-label" for="quantity">Quantity:</label><span style="color:red;font-size:10px;"> *</span>
+        <input  class="form-control" type="number" id="quantity" required name="quantity" min="1" value="1">
         </div>
         <div class="mb-3">
-        <label  class="form-label" for="total-price">Total Amount:</label>
+        <label  class="form-label" for="total-price">Total Amount:</label><span style="color:red;font-size:10px;"> *</span>
         <input type="text" class="form-control bg-dark text-danger" name="total_amount" style="border-color:green" disabled id="total-price"  readonly>
         </div>
+        <div class="mb-3">
         <button class="btn btn-primary text-dark fw-bold" type="button" onclick="calculateTotalPrice()">Calculate Total Price</button>
-
+        </div>
         <!-- <div class="mb-3"> customer_id,product_id,bill_date,total_amount,quantity,product_price,invoice_id
             <label for="exampleInputPassword1" class="form-label">Invoice number</label>
             <input type="number" name="invoice_id"  value="<?= rand(0,10000);?>" required class="form-control" id="exampleInputPassword1">
         </div> -->
         <div class="mb-3">
-        <label  class="form-label" for="total-price">Total Amount:</label>
-        <input type="text" class="form-control bg-dark text-danger" name="total_amount" style="border-color:green"  id="total-price"  >
+        <label  class="form-label" for="total-price">Total Amount:</label><span style="color:red;font-size:10px;"> *</span>
+        <input type="text" class="form-control bg-dark text-danger" required name="total_amount" style="border-color:green"  id="total-price"  >
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Bill date</label>
-            <input type="date" name="bill_date"  required class="form-control" id="exampleInputPassword1">
+            <label for="exampleInputPassword1" class="form-label">Bill date</label><span style="color:red;font-size:10px;"> *</span>
+            <input type="date" name="bill_date"  required class="form-control" required id="exampleInputPassword1">
         </div>
         <div class="d-grid gap-2 mt-3">
             <button type="submit" class="btn btn-success" name="bill">Submit</button>

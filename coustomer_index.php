@@ -2,8 +2,15 @@
 
 <?php
     // session_start();
+    $limit=10;
+   if(isset($_GET["page"])){
+        $page=$_GET["page"];
+   }else{
+    $page=1;
+   }
+    $offset=($page-1)*$limit;
     $con=new mysqli("localhost","root","","stock");
-    $sql="select * from customer";
+    $sql="select * from customer order by id asc  limit $offset,$limit";
     $rs=$con->query($sql);
     $data=$rs->fetch_all(1);
 
@@ -11,21 +18,21 @@
     // print_r($data);
     // echo "<pre>";
     // exit();
-
+    $blank="images/blank.png";
 ?>
 
-<div class="container ">
+<div  class="containe" style="margin-top: -2.50%;margin-left:-1%">
     <table class="table bg-light table-bordered table-hover">
         <thead class=" text-dark" >
             <tr>
 
                 <th class="text-center text-dark" style="background: yellow;">S.no</th>
-                <th class="text-center text-dark" style="background: yellow;">profile</th>
-                <th class="text-center text-dark" style="background: yellow;">name</th>
-                <th class="text-center text-dark" style="background: yellow;">mobile</th>
-                <th class="text-center text-dark" style="background: yellow;">whatsup_no</th>
-                <th class="text-center text-dark" style="background: yellow;">email</th>
-                <th class="text-center text-dark" style="background: yellow;">address</th>
+                <th class="text-center text-dark" style="background: yellow;">Profile</th>
+                <th class="text-center text-dark" style="background: yellow;">Name</th>
+                <th class="text-center text-dark" style="background: yellow;">Mobile</th>
+                <th class="text-center text-dark" style="background: yellow;">Whatsup no</th>
+                <th class="text-center text-dark" style="background: yellow;">E-mail</th>
+                <th class="text-center text-dark" style="background: yellow;">Address</th>
                 <th class="text-center text-dark" style="background: yellow;">Action</th>
             </tr>
         </thead>
@@ -40,11 +47,42 @@
                 <td><?=$info["whatsup_no"];?></td>
                 <td><?=$info["email"];?></td>
                 <td><?=$info["address"];?></td>
-                <td><a class="btn btn-success"  href="customer_edit.php?id=<?=$info["id"]?>">Edit</a>
-                    <a class="btn btn-danger">Delete</a>
+                <td><a class="btn btn-success text-dark"  href="customer_edit.php?id=<?=$info["id"]?>">Edit</a>
+                    <a class="btn btn-danger text-dark">Delete</a>
                 </td>
             </tr>
         </tbody>
         <?php } //$con->close();  }?>
     </table>
+    <?php
+    $sql1="select * from customer";
+    $result=mysqli_query($con,$sql1) or die("query failed");
+    if(mysqli_num_rows($result)>0){
+        $total_records=mysqli_num_rows($result);
+       
+        $total_page=ceil($total_records/$limit);
+        echo '<nav aria-label="Page navigation  example ">'.
+        '<ul class="pagination justify-content-center  mt-5">';
+        if($page>1){
+            echo '<li class="page-item"><a class="page-link" href="coustomer_index.php?page='.($page-1).'">Prev</a></li>';
+            
+        }
+        for($i=1;$i<=$total_page;$i++){
+            if($i==$page){
+                $active="active";
+            }else{
+                $active="";
+            }
+            echo "<li class='page-item $active'><a class='page-link' href='coustomer_index.php?page=$i'>$i</a></li>";    
+        }
+        if($total_page>$page) {
+            echo '<li class="page-item"><a class="page-link" href="coustomer_index.php?page='.($page+1).'">Next</a></li>';
+            
+        }
+        echo "  </ul> ";
+    }
+    $con->close(); 
+?>
+
+  </nav>
     <?php include "bottam.php"?>

@@ -1,4 +1,14 @@
-<?php session_start(); ?>
+<?php session_start();
+      // session_start();
+      if(isset($_SESSION['username']) ){
+        // $navbar = "1";
+        // $logindisplay = "0";
+        $username = $_SESSION['username'];
+        //$password = $_SESSION['password'];
+    } else {
+        header('Location:404.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,15 +38,16 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="images/letter1.png"/>
+    <link rel="shortcut icon" href="images/letter-s.png"/>
   </head>
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <span class="sidebar-brand brand-logo text-primary">Stock manager</span>
-          <p class="sidebar-brand brand-logo-mini text-primary" >SM</p>
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center  fixed-top" style="color:#58D3F7;">
+         
+           <img class="sidebar-brand brand-logo" src="images/letter-s.png" style="width:25%;margin-left:-30%">&nbsp; Stock manager
+          <p class="sidebar-brand brand-logo-mini text-primary" > <img class="sidebar-brand brand-logo" src="images/letter-s.png" style="width:25%;margin-left:-30%"></p>
         </div>
         <ul class="nav">
           <li class="nav-item profile">
@@ -64,17 +75,18 @@
                   </div>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
+                <a href="logout.php" class="dropdown-item preview-item">
+                  <div class=" preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-onepassword  text-info"></i>
+                      <i class="mdi mdi-logout  text-danger"></i>
                     </div>
                   </div>
                   <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                    <p class="preview-subject ellipsis mb-1  text-small">Logout</p>
                   </div>
                 </a>
-                <div class="dropdown-divider"></div>
+                
+                <!-- <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
@@ -85,7 +97,7 @@
                     <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
                   </div>
                 </a>
-              </div>
+              </div> -->
             </div>
           </li>
           <li class="nav-item nav-category">
@@ -159,12 +171,12 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-            <span class="navbar-brand brand-logo-mini text-primary" >SM</span>
+           <img class="sidebar-brand brand-logo" src="images/letter-s.png" style="width:50%;margin-left:-20%">
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
-            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <!-- <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
               <span class="mdi mdi-menu"></span>
-            </button>
+            </button> -->
             <ul class="navbar-nav w-100">
               <li class="nav-item w-100">
                 <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
@@ -174,7 +186,7 @@
             </ul>
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown d-none d-lg-block">
-                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="billing.php">+ Generate invoice</a>
+                <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" href="billing.php">+ Generate invoice</a>
                 <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
                   <h6 class="p-3 mb-0">Projects</h6>
                   <div class="dropdown-divider"></div>
@@ -316,8 +328,8 @@
                   </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
-                  <h6 class="p-3 mb-0">Profile</h6>
-                  <div class="dropdown-divider"></div>
+                  <h6 class="p-3 mb-0 text-center">Action</h6>
+                  <!-- <div class="dropdown-divider"></div>
                   <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
@@ -326,10 +338,10 @@
                     </div>
                     <div class="preview-item-content">
                       <p class="preview-subject mb-1">Settings</p>
-                    </div>
+                    </div> -->
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <a class="dropdown-item preview-item" href="logout.php">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-logout text-danger"></i>
@@ -339,9 +351,9 @@
                       <p class="preview-subject mb-1">Log out</p>
                     </div>
                   </a>
-                  <div class="dropdown-divider"></div>
+                  <!-- <div class="dropdown-divider"></div>
                   <p class="p-3 mb-0 text-center">Advanced settings</p>
-                </div>
+                </div> -->
               </li>
             </ul>
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">

@@ -62,7 +62,7 @@
     <div class="container  mt-3">
         <div class="alert  text-center text-light" style="width:100.30%;margin-left:-2px;border-radius:0;background-color:green">
             <h3>Add product</h3>
-           (<span style="color:red;font-size:10px;">*</span>)<span style="font-size:10px;color:blue;">fields are required</span>
+           (<span style="color:red;font-size:10px;">*</span>)<span style="font-size:10px;color:black;" class="fw-bold">fields are required</span>
         </div>
         <form method="post">
 
@@ -71,9 +71,9 @@
                 <select class="form-select bg-light fw-bold" name="category_id" aria-label="Default select example">
                     <option selected>Select Category</option>
                     <?php
-        foreach($data as $info){ ?>
+        foreach($data as $info){{ ?>
                     <option value="<?=$info["id"];?>"><?=$info["name"];?></option>
-                    <?php } ?>
+                    <?php }}?>
                 </select>
             </div>
 
