@@ -1,5 +1,8 @@
 <?php include "top.php"?>
 <?php
+if(isset($_GET["id"])){
+    $id=$_GET["id"];
+}
     $con=new mysqli("localhost","root","","stock");
     $sql1="select id,name from customer";
     $sql2="select id,product_name from product";
@@ -43,6 +46,7 @@
                     $id=str_pad($idd+1,7,0,STR_PAD_LEFT);
                     $number="E-".$id; 
                     echo "<div id='myAlert' class='container alert' style='background-color:green;border-radius:0;'>";
+                   // echo  "<a href='invoice_view.php?id=$id' class='text-danger fw-bold'>View recipt</a>";
                     echo "<div class='text-dark fw-bold text-center'>Succesfully generated</div>";
                     echo "</div>";
                 }

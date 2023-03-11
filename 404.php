@@ -57,9 +57,9 @@
       
           
         if(!isset($_SESSION['username'])){
-           echo "<a class='btn btn-success  mt-0' style='margin-left:45%' href='login.php'>Back to login</a>";
+           echo "<a class='btn btn-success  text-light mt-0' style='margin-left:45%' href='login.php'>Back to login</a>";
         }else{
-           echo "<a class='btn btn-success text-dark fw-bold mt-0' style='margin-left:45%' href='home_index.php'>Back to home</a>";
+           echo "<a class='btn btn-success text-light fw-bold mt-0' style='margin-left:45%' href='home_index.php'>Back to home</a>";
         }
         ?>
 
