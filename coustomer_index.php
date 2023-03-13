@@ -40,14 +40,14 @@
     foreach($data as $info){ ?>
             <tbody class="text-dark">
             <tr>
-                <td class="bg-primary"><?=++$sn;?></td>
-                <td><img src="<?php echo $info["profile"]?$info["profile"]:$blank;?>" class="rimage" style="width:30px"></td>
-                <td><?=$info["name"];?></td>
-                <td><?=$info["mobile"]?></td>
-                <td><?=$info["whatsup_no"];?></td>
-                <td><?=$info["email"];?></td>
-                <td><?=$info["address"];?></td>
-                <td><a class="btn btn-success text-dark"  href="customer_edit.php?id=<?=$info["id"]?>">Edit</a>
+                <td class="bg-primary text-center"><?=++$sn;?></td>
+                <td class="text-center"><img src="<?php echo $info["profile"]?$info["profile"]:$blank;?>" class="rimage" style="width:30px"></td>
+                <td class="text-center"><?=$info["name"];?></td>
+                <td class="text-center"><?=$info["mobile"]?></td>
+                <td class="text-center"><?=$info["whatsup_no"];?></td>
+                <td class="text-center"><?=$info["email"];?></td>
+                <td class="text-center"><?=$info["address"];?></td>
+                <td class="text-center"><a class="btn btn-success text-dark"  href="customer_edit.php?id=<?=$info["id"]?>">Edit</a>
                     <a class="btn btn-danger text-dark">Delete</a>
                 </td>
             </tr>

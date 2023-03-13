@@ -43,16 +43,16 @@
     foreach($data as $info){ ?>
         <tbody class="text-dark">
             <tr>
-                <td class="bg-primary"><?=++$sn;?></td>
-                <td><?=$info["category_name"]?></td>
-                <td><?=$info["company_name"];?></td>
-                <td><?=$info["product_name"]?></td>
-                <td><?=$info["p_price"];?></td>
-                <td><?=$info["s_price"];?></td>
-                <td><?=$info["qty"];?></td>
-                <td><?=$info["mfg_date"];?></td>
-                <td><?=$info["exp_date"];?></td>
-                <td><a class="btn btn-success text-dark" href="product_edit.php?id=<?=$info["id"]?>">Edit</a>
+                <td class="bg-primary text-center"><?=++$sn;?></td>
+                <td class="text-center"><?=$info["category_name"]?></td>
+                <td class="text-center"><?=$info["company_name"];?></td>
+                <td class="text-center"><?=$info["product_name"]?></td>
+                <td class="text-center"><?=$info["p_price"];?></td>
+                <td class="text-center"><?=$info["s_price"];?></td>
+                <td class="text-center"><?=$info["qty"];?></td>
+                <td class="text-center"><?=$info["mfg_date"];?></td>
+                <td class="text-center"><?=$info["exp_date"];?></td>
+                <td class="text-center"><a class="btn btn-success text-dark" href="product_edit.php?id=<?=$info["id"]?>">Edit</a>
                     <a class="btn btn-danger text-dark">Delete</a>
                 </td>
             </tr>

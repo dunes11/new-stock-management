@@ -38,3 +38,13 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/dunes11/new-stock-management.git
 git push -u origin main
+
+
+CREATE TRIGGER update_product_quantity
+AFTER INSERT ON billing
+FOR EACH ROW
+BEGIN
+    UPDATE product
+    SET quantity = quantity - NEW.quantity
+    WHERE product_id = NEW.product_id;
+END;

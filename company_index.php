@@ -29,9 +29,9 @@
     foreach($data as $info){ ?>
         <tbody class="text-dark">
             <tr>
-                <td class="bg-primary"><?=++$sn;?></td>
-                <td><?=$info["name"];?></td>
-                <td><a class="btn btn-success text-dark">Edit</a>
+                <td class="bg-primary text-center"><?=++$sn;?></td>
+                <td class="text-center"><?=$info["name"];?></td>
+                <td class="text-center"><a class="btn btn-success text-dark">Edit</a>
                     <a class="btn btn-danger text-dark">Delete</a>
                 </td>
             </tr>

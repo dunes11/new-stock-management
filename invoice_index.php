@@ -25,12 +25,13 @@
         <thead class=" text-dark" >
                 <tr>
                     <th class="text-center text-dark" style="background: yellow;">S.no</th>
-                    <th class="text-center text-dark" style="background: yellow;">Bill_date</th>
-                    <th class="text-center text-dark" style="background: yellow;">Invoice_id</th>
+                    <th class="text-center text-dark" style="background: yellow;">Bill date</th>
+                    <th class="text-center text-dark" style="background: yellow;">Invoice number</th>
                     <th class="text-center text-dark" style="background: yellow;">Customer name</th>
                     <th class="text-center text-dark" style="background: yellow;">Product Name</th>
-                    <th class="text-center text-dark" style="background: yellow;">Total amount</th>
                     <th class="text-center text-dark" style="background: yellow;">Product price</th>
+                    <th class="text-center text-dark" style="background: yellow;">Purchase quantity</th>
+                    <th class="text-center text-dark" style="background: yellow;">Total amount</th>
                     <th class="text-center text-dark" style="background: yellow;">Action</th>
                 </tr>
                 
@@ -43,14 +44,15 @@
     
     foreach($data as $info){ ?>
                 <tr>
-                    <td class="bg-primary text-dark"><?=++$sn;?></td>
-                    <td><?=$info["bill_date"]?></td>
-                    <td><?=$info["invoice_id"];?></td>
-                    <td><?=$info["customer_name"];?></td>
-                    <td><?=$info["product_name"];?></td>
-                    <td><?=$info["total_amount"]?></td>
-                    <td><?=$info["product_price"];?></td>
-                    <td><a class="btn btn-success text-dark">Edit</a>
+                    <td class="bg-primary text-center text-dark"><?=++$sn;?></td>
+                    <td class="text-center"><?=$info["bill_date"]?></td>
+                    <td class="text-center"><?=$info["invoice_id"];?></td>
+                    <td class="text-center"><?=$info["customer_name"];?></td>
+                    <td class="text-center"><?=$info["product_name"];?></td>
+                    <td class="text-center"><?=$info["product_price"];?></td>
+                    <td class="text-center"><?=$info["quantity"];?></td>
+                    <td class="text-center"><?=$info["total_amount"]?></td>
+                    <td class="text-center"><a class="btn btn-success text-dark">Edit</a>
                     <a class="btn btn-primary text-dark" href="invoice_view.php?id=<?=$info["id"]?>">View bill</a>
                     </td>
                 </tr>
