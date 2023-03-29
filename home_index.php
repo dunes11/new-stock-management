@@ -1,5 +1,9 @@
+<!-- <script>
+    alert("Login successfully")
+</script> -->
 <?php include "top.php" ?>
 <?php
+
 
    //$id=$_GET["id"];
    $limit=10;
@@ -20,7 +24,12 @@
   //print_r($data);
     
 ?>
-
+<script>
+    setTimeout(()=>{
+    alert("Login successfully")
+    
+    },500)
+</script>
 <div class="containe" style="margin-top: -2.50%;margin-left:-1%">
     <table class="table bg-light table-bordered table-hover">
         <thead class=" text-dark" >

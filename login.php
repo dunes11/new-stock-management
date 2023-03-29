@@ -4,17 +4,24 @@
      $con=new mysqli("localhost","root","","stock");
      $a="";
      $count=null;
- 
-     if(isset($_POST['submit']) ) { 
-         $username = $_POST['name'];  
-         $password = $_POST['password'];   
+    
+ if(isset($_POST["login"])){
+         $username = $_POST['username'];  
+         $password = $_POST['password'];
+             
        
-         $sql = "select * from admin where name = '$username' and password = '$password'";  
-         $rs= $con->query($sql);  
+         $sql = "SELECT  username, password FROM admin WHERE username = '$username' AND password = '$password'";
+         $rs= $con->query($sql); 
+        
          $row = mysqli_fetch_array($rs, MYSQLI_ASSOC);  
          $count = mysqli_num_rows($rs);  
+         
+        
          $_SESSION["username"]=$username; 
          $_SESSION["password"]=$password;
+        
+         
+
          try{  
          if($count == 1){
              header("Location:home_index.php");
@@ -24,7 +31,7 @@
      }catch(Exception $e){
             $a= $e->getMessage();
      }
- }        
+    } 
  ?>
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
@@ -44,19 +51,16 @@
 
 
   <body style="background:black">
-    <!--    Main Content-->
+       <!-- Main Content-->
     <!-- ===============================================-->
     <main class="main " id="top">
-      <nav class="navbar bg-black navbar-expand-lg navbar-light fixed-top py-3 shadow p-3  bg-body " data-navbar-on-scroll="data-navbar-on-scroll">
+      <nav class="navbar bg-black navbar-expand-lg navbar-light fixed-top py-3 shadow p-3  bg-body "  data-navbar-on-scroll="data-navbar-on-scroll">
         <div class="container"><a class="navbar-brand"> <img class="sidebar-brand brand-logo" src="images/letter-s.png" style="width:8%;">&nbsp; Stock manager</a>
-          <!-- <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> -->
-          <div class="collapse navbar-collapse pt-4 pt-lg-0" id="navbarSupportedContent">
-            <!-- <p class="mb-0 ms-auto text-light fs-0 fw-normal"><i class="fas fa-phone-alt me-2"></i>Call Us Now <a class="text-light" href="tel:+604-680-9785">+215(362)4579</a></p> -->
-            <ul class="navbar-nav ms-auto border-bottom border-lg-bottom-0 pt-2 pt-lg-0">
+          <div class=" " id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto  border-lg-bottom-0 pt-2 pt-lg-0">
               <li class="nav-item px-2"><a class="nav-link active" aria-current="page" href="#">Login</a></li>
-              <!-- <li class="nav-item px-2"><a class="nav-link" href="#products">Products</a></li>
-              <li class="nav-item px-2"><a class="nav-link" href="#news">News &amp; Blog</a></li>
-              <li class="nav-item px-2"><a class="nav-link" href="#contact">Contact us</a></li> -->
+              <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="register.php">Register</a></li>
+        
             </ul>
             <div class="d-flex mt-2 align-items-center mt-lg-0">
               <div class="dropdown">
@@ -71,15 +75,15 @@
           </div>
         </div>
       </nav>
-      <section class="py-0">
+      <!-- <section class=""> -->
         <!-- <div class="bg-holder" style="background-image:url(assets/img/illustrations/bg.png);background-position:left center;background-size:auto 816px;">
-        </div>
-        /.bg-holder -->
-
+        </div> -->
+        
+<br>
         <div class="container">
           <div class="row align-items-center min-vh-100">
             <div class="col-md-7 col-xl-7 pt-9 text-md-start text-center">
-              <h1 class="display-2 text-light fw-thin">Welcome in Stock<br class="d-none d-xl-block" /><strong class="fw-bolder text-success">Management system</strong></h1>
+              <h1 class="display-2 text-light fw-thin">Welcome in Stock<br><strong class="fw-bolder text-success">Management</strong></h1>
               <p class="fs-2 text-400">it's very easy and simple to use☻<br class="d-none d-xxl-block" /></p>
             </div>
             <div class="col-md-5 col-xl-5 pe-xxl-0">
@@ -93,17 +97,16 @@
                   <form class="mb-3" method="post">
                     
                     <div class="form-floating mb-3">
-                      <input class="form-control input-box form-ensurance-header-control" required name="name" id="floatingName" type="text" placeholder="name">
-                      <label for="floatingName">Username</label>
+                      <input class="form-control input-box form-ensurance-header-control" required name="username" id="floatingName" type="text" placeholder="name">
+                      <label for="floatingName">Username<img class="sidebar-brand brand-logo" src="images/profile.png" style="width:7%;"></label>
                     </div>
                     <div class="form-floating mb-3">
                       <input class="form-control input-box form-ensurance-header-control" required name="password" id="floatingPhone" type="password" placeholder="name@example.com">
-                      <label for="floatingPhone">Password</label>
-                    </div>
-                    <label for="floatingPhone">Password : narayan123 | username : @narayan</label>
-                    </div>
+                      <label for="floatingPhone">Password<img class="sidebar-brand brand-logo" src="images/padlock.png" style="width:7%;"></label>
+                  <br><br>
                     <div class="col-12 d-grid">
-                      <button type="submit" name="submit" class="btn btn-success rounded-pill" type="submit">Login</button>
+                     <button type="submit" name="login" class="btn btn-success rounded-pill" type="submit">Login</button>
+                     
                     </div>
                   </form>
                 </div>
@@ -124,12 +127,12 @@
               <p class="fs--1 fw-light my-2 text-center text-md-end text-200"> Made by&nbsp;
                 <svg class="bi bi-suit-heart-fill" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#F95C19" viewBox="0 0 16 16">
                   <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"></path>
-                </svg>&nbsp;&nbsp;<a class="fw-bold text-success" href="" target="_blank">Narayan swami</a>
+                </svg>&nbsp;&nbsp;<a class="fw-bold text-success" href="https://github.com/Codensr" target="_blank">Narayan swami</a>
               </p>
             </div>
           </div>
         </div>
-        <!-- end of .container-->
+       
 
         </section>
     </main>

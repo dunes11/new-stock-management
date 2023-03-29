@@ -8,6 +8,20 @@
     } else {
         header('Location:404.php');
     }
+    $con=new mysqli("localhost","root","","stock");
+    $username=$_SESSION['username'];
+  $sql="select profile from admin where username='$username' ";
+  $rs=$con->query($sql);
+//    
+   $data=$rs->fetch_all(1);
+  //  print_r($data);
+  
+   foreach($data as $info){
+
+    $profile=$info["profile"];
+  
+   }
+   $con->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,10 +36,12 @@
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+    <!-- <link rel="stylesheet" href="assets/css/card.css"> -->
     <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
     <!-- CDN of bootstrap -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -54,7 +70,7 @@
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="images/citrus.jpg" alt="">
+                  <img class="img-xs rounded-circle " src="<?= $info["profile"];?>" alt="">
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
@@ -67,11 +83,11 @@
                 <a href="profile.php" class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-settings text-primary"></i>
+                      <i class="mdi mdi-account text-primary"></i>
                     </div>
                   </div>
                   <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
+                    <p class="preview-subject ellipsis mb-1 text-small">Your profile</p>
                   </div>
                 </a>
                 <div class="dropdown-divider"></div>
@@ -155,7 +171,6 @@
             </div>
           </li>
  
-   
           <li class="nav-item menu-items">
             <a class="nav-link" href="logout.php">
               <span class="menu-icon">
@@ -225,7 +240,7 @@
                   <div class="dropdown-divider"></div>
                   <p class="p-3 mb-0 text-center">See all projects</p>
                 </div> -->
-              </li>
+              <!-- </li>
               <li class="nav-item nav-settings d-none d-lg-block">
                 <a class="nav-link" href="#">
                   <i class="mdi mdi-view-grid"></i>
@@ -318,11 +333,11 @@
                   <div class="dropdown-divider"></div>
                   <p class="p-3 mb-0 text-center">See all notifications</p>
                 </div>
-              </li>
+              </li> -->
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="images/citrus.jpg" alt="">
+                    <img class="img-xs rounded-circle" src="<?= $info["profile"];?>" alt="">
                     <p class="mb-0 d-none d-sm-block navbar-profile-name"><?php echo $_SESSION["username"];?></p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
@@ -338,7 +353,17 @@
                     </div>
                     <div class="preview-item-content">
                       <p class="preview-subject mb-1">Settings</p>
-                    </div> -->
+                    </div> 
+                  </a>-->
+                  <a class="dropdown-item preview-item" href="profile.php">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-account text-primary"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1">Your profile</p>
+                    </div>
                   </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item preview-item" href="logout.php">
@@ -351,6 +376,7 @@
                       <p class="preview-subject mb-1">Log out</p>
                     </div>
                   </a>
+                  
                   <!-- <div class="dropdown-divider"></div>
                   <p class="p-3 mb-0 text-center">Advanced settings</p>
                 </div> -->

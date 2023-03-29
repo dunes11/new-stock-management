@@ -9,7 +9,7 @@
     }
      $offset=($page-1)*$limit;
    $con=new mysqli("localhost","root","","stock");
-   $sql="SELECT billing.id, billing.bill_date, billing.total_amount,billing.invoice_id,billing.quantity, customer.name AS customer_name, product.product_name AS product_name,product.s_price AS product_price FROM billing JOIN customer ON billing.customer_id = customer.id JOIN product ON billing.product_id = product.id order by billing.id asc limit $offset,$limit";
+   $sql="SELECT billing.id, billing.bill_date, billing.total_amount,billing.invoice_id,billing.quantity, customer.name AS customer_name, product.product_name AS product_name,product.s_price AS product_price FROM billing JOIN customer ON billing.customer_id = customer.id JOIN product ON billing.product_id = product.id order by billing.id desc limit $offset,$limit";
    $rs=$con->query($sql);
 //    $con->close();
    $data=$rs->fetch_all(1);
@@ -40,8 +40,6 @@
             <tbody class="text-dark">
                 <?php $sn=0;
     // print_r($data);
-    
-    
     foreach($data as $info){ ?>
                 <tr>
                     <td class="bg-primary text-center text-dark"><?=++$sn;?></td>
