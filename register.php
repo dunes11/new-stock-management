@@ -114,6 +114,7 @@
               <div class="card card-bg shadow hero-header-form">
                 <div class="card-body p-4 p-xl-6">
                   <h2 class="text-100 text-center"><img class="sidebar-brand brand-logo" src="images/stamped.png" style="width:10%;">Register</h2>
+                 <div class="text-center" style="font-size:15px"><img class="sidebar-brand brand-logo" src="images/medical.png" style="width:2%;"> <span class="text-center" style="color:white;" class="fw-bold">fields are required</span></div>
                   <?php if(isset($takeError)){ 
                     
                    echo "<div class='text-danger text-center mt-5'>".$takeError." alredy exists</div>"; 
@@ -122,20 +123,20 @@
                   <form class="mb-3" method="post" enctype="multipart/form-data">
                   <div class="form-floating mb-3">
                       <input class="form-control input-box form-ensurance-header-control" required name="full_name" id="floatingName" type="text" placeholder="full name">
-                      <label for="floatingName">Full name</label>
+                      <label for="floatingName">Full name <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:1.5%;"></label>
                     </div> <div class="form-floating mb-3">
                       <input class="form-control input-box form-ensurance-header-control" required name="mobile" id="floatingName" type="number" placeholder="name">
-                      <label for="floatingName">Mobile</label>
+                      <label for="floatingName">Mobile <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:1.5%;"></label>
                     </div> <div class="form-floating mb-3">
                       <input class="form-control input-box form-ensurance-header-control" required name="email" id="floatingName" type="email" placeholder="name">
-                      <label for="floatingName">e-mail</label>
+                      <label for="floatingName">e-mail <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:1.5%;"></label>
                     </div>
                     <div class="form-floating mb-3">
                       <input class="form-control input-box form-ensurance-header-control" required name="username" id="floatingName" type="text" placeholder="name">
-                      <label for="floatingName">Username</label>
+                      <label for="floatingName">Username <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:1.5%;"></label>
                     <div class="form-floating mb-3">
                       <input class="form-control input-box form-ensurance-header-control" required name="password" id="floatingPhone" type="password" placeholder="name@example.com">
-                      <label for="floatingPhone">Password</label>
+                      <label for="floatingPhone">Password <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:1.5%;"></label>
                     </div>
                     <div class="form-floating mb-3">
                       <textarea name="address" class="form-control form-ensurance-header-control" required id="floatingAddress"></textarea>
@@ -144,7 +145,7 @@
 
                     <div class="mb-3">
                     <input class="form-control input-box form-ensurance-header-control" id="floatingPhone" required name="profile" style="height:45px" type="file">
-                    <label for="floatingfile" >Upload profile</label>
+                    <label for="floatingfile" >Upload profile <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:1.5%;"></label>
                    <br>
                    <br>
                     <div class="col-12 d-grid">

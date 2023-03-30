@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="assets/css/profile.css">
     <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
     <!-- <link rel="stylesheet" href="assets/css/card.css"> -->
     <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
@@ -120,11 +121,11 @@
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" >
+            <a class="nav-link" href="profile.php">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="mdi mdi-account"></i>
               </span>
-              <span class="menu-title">Dashboard</span>
+              <span class="menu-title">Profile</span>
             </a>
           </li>
           <li class="nav-item menu-items">

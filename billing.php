@@ -59,17 +59,18 @@ if(isset($_GET["id"])){
     <div class="alert  text-center text-light"
         style="width:100.30%;margin-left:-2px;border-radius:0;background-color:green">
         <h3>Make bill</h3>
-        (<span style="color:red;font-size:10px;">*</span>)<span style="font-size:10px;color:black;" class="fw-bold">fields are required</span>
+        <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:2%;"> <span style="font-size:10px;color:black;" class="fw-bold">fields are required</span>
+
     </div>
     <form method="post">
         
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Invoice number</label>
+            <label for="exampleInputPassword1" class="form-label">Invoice number</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
             <input type="text" name="invoice_id" style="border-color:green" value="<?=$number;?>" readonly required class="form-control bg-dark"
                 id="exampleInputPassword1">
         </div>
         <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Select Customer</label><span style="color:red;font-size:10px;"> *</span>
+        <label for="exampleInputPassword1" class="form-label">Select Customer</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
             <select required class="form-select bg-light fw-bold" name="customer_id" aria-label="Default select example">
                 <option selected>Select Customer</option>
                 <?php
@@ -80,7 +81,7 @@ if(isset($_GET["id"])){
         </div>
         <div class="mb-3">
             <!-- <label for="product">Select a product:</label> -->
-            <label for="exampleInputPassword1" class="form-label">Select product</label><span style="color:red;font-size:10px;"> *</span>
+            <label for="exampleInputPassword1" class="form-label">Select product</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
             <select required class="form-select bg-light fw-bold" id="product" name="product_id">
                 <option value="">Select product</option>
                 <?php
@@ -110,7 +111,7 @@ if(isset($_GET["id"])){
             </select>
         </div>
         <div class="mb-3">
-            <label class="form-label" for="quantity">Available quantity:</label>
+            <label class="form-label" for="quantity">Available quantity:</label> 
             <input class="form-control bg-dark text-danger" style="border-color:green" disabled type="text" id="quantity1" name="qty" readonly>
         </div>
 
@@ -120,11 +121,11 @@ if(isset($_GET["id"])){
         </div>
 
         <div class="mb-3">
-        <label  class="form-label" for="quantity">Quantity:</label><span style="color:red;font-size:10px;"> *</span>
+        <label  class="form-label" for="quantity">Quantity:</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
         <input  class="form-control" type="number" id="quantity" required name="quantity" min="1" value="1">
         </div>
         <div class="mb-3">
-        <label  class="form-label" for="total-price">Total Amount:</label><span style="color:red;font-size:10px;"> *</span>
+        <label  class="form-label" for="total-price">Total Amount:</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
         <input type="text" class="form-control bg-dark text-danger" name="total_amount" style="border-color:green" disabled id="total-price"  readonly>
         </div>
         <div class="mb-3">
@@ -135,11 +136,11 @@ if(isset($_GET["id"])){
             <input type="number" name="invoice_id"  value="<?= rand(0,10000);?>" required class="form-control" id="exampleInputPassword1">
         </div> -->
         <div class="mb-3">
-        <label  class="form-label" for="total-price">Total Amount:</label><span style="color:red;font-size:10px;"> *</span>
+        <label  class="form-label" for="total-price">Total Amount:</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
         <input type="text" class="form-control bg-dark text-danger" required name="total_amount" style="border-color:green"  id="total-price"  >
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Bill date</label><span style="color:red;font-size:10px;"> *</span>
+            <label for="exampleInputPassword1" class="form-label">Bill date</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
             <input type="date" name="bill_date"  required class="form-control" required id="exampleInputPassword1">
         </div>
         <div class="d-grid gap-2 mt-3">

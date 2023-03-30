@@ -68,37 +68,37 @@
 <div class="container  mt-3">
         <div class="alert  text-center text-light" style="width:100.30%;margin-left:-2px;border-radius:0;background-color:green">
             <h3>Add customer</h3>
-            (<span style="color:red;font-size:10px;">*</span>)<span style="font-size:10px;color:black;" class="fw-bold">fields are required</span>
+            <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:2%;"> <span style="font-size:10px;color:black;" class="fw-bold">fields are required</span>
         </div>
         <form method="post" enctype="multipart/form-data" >
 
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Customer name</label><span style="color:red;font-size:10px;"> *</span>
+                <label for="exampleInputPassword1" class="form-label">Customer name</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <input type="text" name="name" required placeholder="Enter customer name" class="form-control"
                     id="exampleInputPassword1">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Mobile</label><span style="color:red;font-size:10px;"> *</span>
+                <label for="exampleInputPassword1" class="form-label">Mobile</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <input type="number" name="mobile" placeholder="Enter purchase price" required class="form-control"
                     id="exampleInputPassword1">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Whatsup no</label><span style="color:red;font-size:10px;"> *</span>
+                <label for="exampleInputPassword1" class="form-label">Whatsup no</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <input type="number" name="whatsup_no" placeholder="Enter whatsup number" required class="form-control"
                     id="exampleInputPassword1">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">E-mail</label><span style="color:red;font-size:10px;"> *</span>
+                <label for="exampleInputPassword1" class="form-label">E-mail</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <input type="email" name="email" placeholder="Enter your e-mail" required class="form-control"
                     id="exampleInputPassword1">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Address</label><span style="color:red;font-size:10px;"> *</span>
+                <label for="exampleInputPassword1" class="form-label">Address</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <input type="" name="address" placeholder="Enter your address" required class="form-control"
                     id="exampleInputPassword1">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Upload profile pic</label><span style="color:red;font-size:10px;"> *</span>
+                <label for="exampleInputPassword1" class="form-label">Upload profile pic</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <input type="file" name="profile"  class="form-control" id="exampleInputPassword1">
             </div>
             <div class="d-grid gap-2 mt-3">

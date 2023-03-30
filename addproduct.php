@@ -62,12 +62,12 @@
     <div class="container  mt-3">
         <div class="alert  text-center text-light" style="width:100.30%;margin-left:-2px;border-radius:0;background-color:green">
             <h3>Add product</h3>
-           (<span style="color:red;font-size:10px;">*</span>)<span style="font-size:10px;color:black;" class="fw-bold">fields are required</span>
+            <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:2%;"> <span style="font-size:10px;color:black;" class="fw-bold">fields are required</span>
         </div>
         <form method="post">
 
             <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Select Category</label><span style="color:red;font-size:10px;"> *</span>
+            <label for="exampleInputPassword1" class="form-label">Select Category</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <select class="form-select bg-light fw-bold" name="category_id" aria-label="Default select example">
                     <option selected>Select Category</option>
                     <?php
@@ -78,7 +78,7 @@
             </div>
 
             <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Select company</label><span style="color:red;font-size:10px;"> *</span>
+            <label for="exampleInputPassword1" class="form-label">Select company</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <select class="form-select bg-light fw-bold" name="company_id" aria-label="Default select example">
                     <option selected>Select company</option>
                     <?php
@@ -89,32 +89,32 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Product name</label><span style="color:red;font-size:10px;"> *</span>
+                <label for="exampleInputPassword1" class="form-label">Product name</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <input type="text" name="product_name" required placeholder="Enter product name" class="form-control"
                     id="exampleInputPassword1">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Purchase price</label><span style="color:red;font-size:10px;"> *</span>
+                <label for="exampleInputPassword1" class="form-label">Purchase price</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <input type="number" name="p_price" placeholder="Enter purchase price" required class="form-control"
                     id="exampleInputPassword1">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Selling price</label><span style="color:red;font-size:10px;"> *</span>
+                <label for="exampleInputPassword1" class="form-label">Selling price</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <input type="number" name="s_price" placeholder="Selling price" required class="form-control"
                     id="exampleInputPassword1">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Qty</label><span style="color:red;font-size:10px;"> *</span>
+                <label for="exampleInputPassword1" class="form-label">Qty</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <input type="number" name="qty" placeholder="Quantity" required class="form-control"
                     id="exampleInputPassword1">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Manufacturing date</label><span style="color:red;font-size:10px;"> *</span>
+                <label for="exampleInputPassword1" class="form-label">Manufacturing date</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <input type="date" name="mfg_date" placeholder="Enter manufacturing date" required class="form-control"
                     id="exampleInputPassword1">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Expiary date</label><span style="color:red;font-size:10px;"> *</span>
+                <label for="exampleInputPassword1" class="form-label">Expiary date</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
                 <input type="date" name="exp_date" placeholder="Enter expiary date" required class="form-control"
                     id="exampleInputPassword1">
             </div>

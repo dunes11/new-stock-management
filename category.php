@@ -48,10 +48,11 @@ try {
     <div class="alert  text-center text-light"
         style="width:100.30%;margin-left:-2px;border-radius:0;background-color:green">
         <h3>Add category</h3>
+        <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:2%;"> <span style="font-size:10px;color:black;" class="fw-bold">fields are required</span>
     </div>
     <form method="post" >
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Category name</label>
+            <label for="exampleInputPassword1" class="form-label">Category name</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
             <input type="text" name="name" required placeholder="Enter category" class="form-control"
                 id="exampleInputPassword1">
             <div class="d-grid gap-2 mt-3">
