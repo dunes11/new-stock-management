@@ -22,10 +22,10 @@
 ?>
 
 <div  class="containe" style="margin-top: -2.50%;margin-left:-1%">
+<div class="table-responsive">
     <table class="table bg-light table-bordered table-hover">
         <thead class=" text-dark" >
             <tr>
-
                 <th class="text-center text-dark" style="background: yellow;">S.no</th>
                 <th class="text-center text-dark" style="background: yellow;">Profile</th>
                 <th class="text-center text-dark" style="background: yellow;">Name</th>
@@ -54,6 +54,7 @@
         </tbody>
         <?php } //$con->close();  }?>
     </table>
+</div>
     <?php
     $sql1="select * from customer";
     $result=mysqli_query($con,$sql1) or die("query failed");

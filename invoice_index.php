@@ -21,6 +21,7 @@
  
 ?>
     <div class="containe" style="margin-top: -2.50%;margin-left:-1%">
+    <div class="table-responsive">
     <table class="table bg-light table-bordered table-hover">
         <thead class=" text-dark" >
                 <tr>
@@ -57,6 +58,7 @@
             </tbody>
             <?php } ?>
         </table>
+    </div>
     </div>
     <?php
     $sql1="select * from billing";

@@ -5,6 +5,9 @@
         $password = '';
         $pdo = new PDO($dsn, $username, $password);
         $error=null;
+        $success="";
+        $unsuccess="";
+        $tab=null;
         try {
         if(isset($_POST['register'])) {
             if(isset($_POST['username']) && ($_POST['mobile'])){
@@ -12,6 +15,7 @@
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute();
             }
+             
             if(isset($_POST["register"])){
                 if(($_FILES["profile"]['error']!=4)){
                    $valid=["jpg","img"];
@@ -22,10 +26,9 @@
                    $to="images/".$_FILES['profile']["name"];
                    $from=$_FILES['profile']['tmp_name'];
                    if(move_uploaded_file($from,$to)){
-                       //echo "uploaded succesfully";
-                   }else{
-                       echo "file type not matched";
+                       $success= "<div class='text-primary'>Succesfully Account created </div>";
                    }
+                  
                    $sql = 'INSERT INTO admin (profile,full_name,username,mobile,email,address,password) VALUES (:profile,:full_name, :username, :mobile, :email, :address,:password)';
                    $stmt = $pdo->prepare($sql);
                   
@@ -36,27 +39,21 @@
                    $stmt->bindParam(':email',$_POST['email']);
                    $stmt->bindParam(':address',$_POST['address']);
                    $stmt->bindParam(':password',$_POST['password']);
-                      
-                  if( $stmt->execute()){
-                  
-                  //  echo "<div class='container alert' id='myAlert' style='background-color:#2EFE2E;border-radius:0;'>";
-
-                   echo "<h3 style='color:green'>Succesfully inserted</h3>";
-                  //  echo "</div>";
-                  }
+                    $tab= $stmt->execute();
+                
+               }else{
+                echo   $unsuccess= "<div class='text-danger text-center'>Please upload valid image type</div>";
                }
            }
         }
     }
-        //echo 'Data inserted successfully.';
         } catch (PDOException $e){
             $error=$stmt->errorInfo();
-           
+           print_r($error);
             if($error[1]){
               $mass = str_replace(array("'", "key "), "", $error);
               $escon=implode($mass);
               $takeError=str_replace("230001062","",$escon);
-             
               echo "<div class='text-danger'>".$takeError."</div>";
             }
         }
@@ -98,7 +95,8 @@
             </div>
           </div>
         </div>
-      </nav>
+      </nav> 
+      
       <section class="py-0">
         <!-- <div class="bg-holder" style="background-image:url(assets/img/illustrations/bg.png);background-position:left center;background-size:auto 816px;">
         </div>
@@ -115,7 +113,14 @@
                 <div class="card-body p-4 p-xl-6">
                   <h2 class="text-100 text-center"><img class="sidebar-brand brand-logo" src="images/stamped.png" style="width:10%;">Register</h2>
                  <div class="text-center" style="font-size:15px"><img class="sidebar-brand brand-logo" src="images/medical.png" style="width:2%;"> <span class="text-center" style="color:white;" class="fw-bold">fields are required</span></div>
-                  <?php if(isset($takeError)){ 
+                  <?php 
+                          if(isset($tab)){
+                            echo "<h3 style='color:green'>Account succesfully created</h3>";
+                           }
+                           if(isset($unsuccess)){
+                            echo $unsuccess;
+                           }
+                  if(isset($takeError)){ 
                     
                    echo "<div class='text-danger text-center mt-5'>".$takeError." alredy exists</div>"; 
          }
