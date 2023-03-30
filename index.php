@@ -17,7 +17,6 @@ if ($conn->connect_error) {
 $sql = "SELECT id, product_name FROM product";
 $result = $conn->query($sql);
 ?>
-
 <form method="post">
   <label for="product">Product:</label>
   <select id="product" name="product">
