@@ -97,10 +97,10 @@
         </div>
       </nav> 
       
-      <section class="py-0">
-        <!-- <div class="bg-holder" style="background-image:url(assets/img/illustrations/bg.png);background-position:left center;background-size:auto 816px;">
+   
+      <div class="bg-holder" style="background-image:url(assets/img/illustrations/bg.png);background-position: center;background-size:auto 816px;">
         </div>
-        /.bg-holder -->
+       
 <br>
         <div class="container">
           <div class="row align-items-center min-vh-100">
@@ -111,7 +111,7 @@
             <div class="col-md-5 col-xl-5 pe-xxl-0">
               <div class="card card-bg shadow hero-header-form">
                 <div class="card-body p-4 p-xl-6">
-                  <h2 class="text-100 text-center"><img class="sidebar-brand brand-logo" src="images/stamped.png" style="width:10%;">Register</h2>
+                  <h2 class="text-100 text-center"><img class="sidebar-brand brand-logo" src="images/signup.png" style="width:8%;"> Register</h2>
                  <div class="text-center" style="font-size:15px"><img class="sidebar-brand brand-logo" src="images/medical.png" style="width:2%;"> <span class="text-center" style="color:white;" class="fw-bold">fields are required</span></div>
                   <?php 
                           if(isset($tab)){

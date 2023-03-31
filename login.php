@@ -9,7 +9,6 @@
          $username = $_POST['username'];  
          $password = $_POST['password'];
              
-       
          $sql = "SELECT  username, password FROM admin WHERE username = '$username' AND password = '$password'";
          $rs= $con->query($sql); 
         
@@ -20,8 +19,6 @@
          $_SESSION["username"]=$username; 
          $_SESSION["password"]=$password;
         
-         
-
          try{  
          if($count == 1){
              header("Location:home_index.php");
@@ -75,9 +72,9 @@
           </div>
         </div>
       </nav>
-      <!-- <section class=""> -->
-        <!-- <div class="bg-holder" style="background-image:url(assets/img/illustrations/bg.png);background-position:left center;background-size:auto 816px;">
-        </div> -->
+     
+        <div class="bg-holder" style="background-image:url(assets/img/illustrations/bg.png);background-position: center;background-size:auto 816px;">
+        </div>
         
 <br>
         <div class="container">
@@ -98,7 +95,7 @@
                     
                     <div class="form-floating mb-3">
                       <input class="form-control input-box form-ensurance-header-control" required name="username" id="floatingName" type="text" placeholder="name">
-                      <label for="floatingName">Username<img class="sidebar-brand brand-logo" src="images/profile.png" style="width:7%;"></label>
+                      <label for="floatingName">Username<img class="sidebar-brand brand-logo" src="images/profile.png" style="width:6%;"></label>
                     </div>
                     <div class="form-floating mb-3">
                       <input class="form-control input-box form-ensurance-header-control" required name="password" id="floatingPhone" type="password" placeholder="name@example.com">
@@ -114,7 +111,7 @@
             </div>
           </div>
         </div>
-      </section>
+    
       
       <section class="py-0 bg-black">
 
@@ -132,13 +129,9 @@
             </div>
           </div>
         </div>
-       
-
         </section>
     </main>
 
     <script src="assets/js/theme.js"></script>
-
-  </body>
-
+</body>
 </html>
