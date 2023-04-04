@@ -35,7 +35,7 @@
     <table class="table bg-light table-bordered table-hover">
         <thead class=" text-dark" >
             <tr>
-                <th class="text-center text-dark" style="background: yellow;">S.no</th>
+                <th class="text-c   enter text-dark" style="background: yellow;">S.no</th>
                 <th class="text-center text-dark" style="background: yellow;">Category Name</th>
                 <th class="text-center text-dark" style="background: yellow;">Company Name</th>
                 <th class="text-center text-dark" style="background: yellow;">Product Name</th>

@@ -21,7 +21,7 @@
  
 ?>
     <div class="containe" style="margin-top: -2.50%;margin-left:-1%">
-    <div class="table-responsive">
+    <div class="table-responsive table-responsive-md table-responsive-lg table-responsive-sm">
     <table class="table bg-light table-bordered table-hover">
         <thead class=" text-dark" >
                 <tr>
@@ -52,7 +52,7 @@
                     <td class="text-center"><?=$info["quantity"];?></td>
                     <td class="text-center"><?=$info["total_amount"]?></td>
                     <td class="text-center"><a class="btn btn-success text-dark">Edit</a>
-                    <a class="btn btn-primary text-dark" href="invoice_view.php?id=<?=$info["id"]?>">View bill</a>
+                    <a class="btn btn-primary text-dark" href="invoice_view.php?id=<?=$info["id"]?>">View invoice</a>
                     </td>
                 </tr>
             </tbody>

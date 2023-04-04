@@ -338,7 +338,10 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
+                  <div class="count-indicator">
                     <img class="img-xs rounded-circle" src="<?= $info["profile"];?>" alt="">
+                    <span class="count bg-success border" style="margin-top: 18px;margin-left:5px"></span>
+                  </div>
                     <p class="mb-0 d-none d-sm-block navbar-profile-name"><?php echo $_SESSION["username"];?></p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>

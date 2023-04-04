@@ -55,6 +55,8 @@ if(isset($_GET["id"])){
 
 
 ?>
+
+
 <div class="container mt-3">
     <div class="alert  text-center text-light"
         style="width:100.30%;margin-left:-2px;border-radius:0;background-color:green">
@@ -70,8 +72,8 @@ if(isset($_GET["id"])){
                 id="exampleInputPassword1">
         </div>
         <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Select Customer</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
-            <select required class="form-select bg-light fw-bold" name="customer_id" aria-label="Default select example">
+        <label for="exampleInputPassword1"  class="form-label">Select Customer</label> <img class="sidebar-brand brand-logo" src="images/medical.png" style="width:.80%;">
+            <select required  class="form-select bg- fw-bold" name="customer_id" aria-label="Default select example">
                 <option selected>Select Customer</option>
                 <?php
         foreach($data as $info) { ?>
@@ -105,7 +107,7 @@ if(isset($_GET["id"])){
     } else {
         echo "<option value=''>No products found</option>";
     }
-
+// #191c24
     ?>
 
             </select>

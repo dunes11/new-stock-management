@@ -51,7 +51,7 @@
        <!-- Main Content-->
     <!-- ===============================================-->
     <main class="main " id="top">
-      <nav class="navbar bg-black navbar-expand-lg navbar-light fixed-top py-3 shadow p-3  bg-body "  data-navbar-on-scroll="data-navbar-on-scroll">
+      <nav class="navbar bg-black navbar-expand-lg navbar-light fixed-top py-3  p-3  bg-body "  data-navbar-on-scroll="data-navbar-on-scroll">
         <div class="container"><a class="navbar-brand"> <img class="sidebar-brand brand-logo" src="images/letter-s.png" style="width:8%;">&nbsp; Stock manager</a>
           <div class=" " id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto  border-lg-bottom-0 pt-2 pt-lg-0">
